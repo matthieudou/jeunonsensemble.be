@@ -1,4 +1,11 @@
-module.exports = {
+require('dotenv').config()
+
+export default {
+  env: {
+    contenfulApiKey: process.env.CONTENTFUL_API_KEY,
+    contenfulSpaceId: process.env.CONTENTFUL_SPACE_ID
+  },
+
   /*
   ** Headers of the page
   */
@@ -17,6 +24,10 @@ module.exports = {
 
   css: [
     '~/assets/styles/main.scss'
+  ],
+
+  plugins: [
+    '~/plugins/contentful'
   ],
 
   /*
