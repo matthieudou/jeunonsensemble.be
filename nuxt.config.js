@@ -3,7 +3,14 @@ require('dotenv').config()
 export default {
   env: {
     contenfulApiKey: process.env.CONTENTFUL_API_KEY,
-    contenfulSpaceId: process.env.CONTENTFUL_SPACE_ID
+    contenfulSpaceId: process.env.CONTENTFUL_SPACE_ID,
+    routesOrder: [
+      'accueil',
+      'pourquoi-jeuner',
+      'comment-jeuner',
+      'agenda',
+      'plus-dinformations'
+    ]
   },
 
   /*
@@ -34,6 +41,7 @@ export default {
   ** Customize the progress bar color
   */
   loading: { color: '#3B8070' },
+
   /*
   ** Build configuration
   */
@@ -51,5 +59,15 @@ export default {
         })
       }
     }
+  },
+
+  generate: {
+    routes: [
+      '/accueil',
+      '/plus-dinformations',
+      '/agenda',
+      '/comment-jeuner',
+      '/pourquoi-jeuner'
+    ]
   }
 }
