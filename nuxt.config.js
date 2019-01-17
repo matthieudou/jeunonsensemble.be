@@ -4,14 +4,7 @@ export default {
   env: {
     contenfulApiKey: process.env.CONTENTFUL_API_KEY,
     contenfulSpaceId: process.env.CONTENTFUL_SPACE_ID,
-    sentryDsn: process.env.SENTRY_DSN,
-    routesOrder: [
-      'accueil',
-      'pourquoi-jeuner',
-      'comment-jeuner',
-      'agenda',
-      'plus-dinformations'
-    ]
+    sentryDsn: process.env.SENTRY_DSN
   },
 
   /*
