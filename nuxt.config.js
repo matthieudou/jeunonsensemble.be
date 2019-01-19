@@ -80,7 +80,7 @@ export default {
           include: 2
         })
       return [
-        res.items[0].fields.pages.map(page => {
+        ...res.items[0].fields.pages.map(page => {
           return `/${page.fields.slug}`
         }),
         '/'
