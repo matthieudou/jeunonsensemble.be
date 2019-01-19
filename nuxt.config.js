@@ -43,6 +43,7 @@ export default {
   plugins: [
     '~/plugins/contentful',
     '~/plugins/sentry',
+    '~/plugins/scrollTo',
     { src: '~/plugins/ga', ssr: false }
   ],
 
