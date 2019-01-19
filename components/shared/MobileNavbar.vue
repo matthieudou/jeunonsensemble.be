@@ -1,5 +1,5 @@
 <template>
-  <nav class="px-8 py-4">
+  <nav class="px-8 py-2">
     <div class="flex justify-between items-center text-blue-lightest h-full">
       <base-logo class="w-10 h-10 fill-current"/>
 
