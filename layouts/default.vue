@@ -1,10 +1,13 @@
 <template>
   <div class="font-sans">
     <nuxt/>
+    <base-footer/>
   </div>
 </template>
 
 <script>
+  import BaseFooter from '~/components/shared/BaseFooter'
+
   export default {
     middleware: ['root'],
 
@@ -14,6 +17,10 @@
           class: 'bg-grey-lightest'
         }
       }
+    },
+
+    components: {
+      BaseFooter
     }
   }
 </script>
