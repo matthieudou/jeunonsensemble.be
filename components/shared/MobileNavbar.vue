@@ -29,7 +29,7 @@
         v-if="navOpen">
 
         <div class="flex justify-between items-center text-grey-darkest">
-          <base-logo class="w-10 h-10 fill-current"/>
+          <base-logo class="w-10 h-10 fill-current text-blue"/>
 
           <button
             class="text-grey-darkest"
@@ -52,7 +52,7 @@
 
         <div class="mt-16">
           <nuxt-link
-            class="block mt-12 no-underline text-grey-darkest uppercase font-bold"
+            class="block mt-12 no-underline text-grey-darkest uppercase font-bold tracking-wide text-lg"
             @click.native="navOpen = false"
             v-for="link in links"
             :key="link.slug"

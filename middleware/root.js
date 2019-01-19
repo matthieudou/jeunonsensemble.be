@@ -1,3 +1,3 @@
-export default function ({ route, redirect }) {
-  if (route.path === '/') redirect('/accueil')
+export default function ({ store, route, redirect }) {
+  if (route.path === '/') redirect(store.getters['getLinks'][0].slug)
 }

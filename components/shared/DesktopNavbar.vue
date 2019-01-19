@@ -2,7 +2,7 @@
   <nav>
     <div class="flex justify-between items-center flex-wrap text-blue-lightest h-full px-8 py-4">
       <nuxt-link
-        to="/accueil"
+        :to="$store.getters['getLinks'][0].slug"
         class="flex items-center text-blue-lightest no-underline"
       >
         <base-logo class="fill-current"/>

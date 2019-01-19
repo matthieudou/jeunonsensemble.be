@@ -1,3 +1,4 @@
+import * as contentful from 'contentful'
 require('dotenv').config()
 
 export default {
@@ -72,12 +73,24 @@ export default {
   },
 
   generate: {
-    routes: [
-      '/accueil',
-      '/plus-dinformations',
-      '/agenda',
-      '/comment-jeuner',
-      '/pourquoi-jeuner'
-    ]
+    routes: function () {
+      return client
+        .getEntries({
+          content_type: 'master',
+          include: 2
+        })
+        .then(res => {
+          return res.items[0].fields.pages.map(page => {
+            return `/${page.fields.slug}`
+          })
+        })
+    }
   }
 }
+
+const client = contentful.createClient({
+  space: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_API_KEY,
+  host: 'https://cdn.contentful.com',
+  environment: 'master'
+})
