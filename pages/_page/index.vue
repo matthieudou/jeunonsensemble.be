@@ -1,6 +1,11 @@
 <template>
   <div>
     <!-- POTENTIAL BANNER IMAGE -->
+    <div
+      v-if="image"
+      class="h-48 bg-cover bg-center"
+      :style="`background-image: url(${image.fields.file.url})`"
+    />
 
     <!-- NAVIGATION -->
     <base-navbar/>
@@ -26,10 +31,6 @@
   import BaseNavbar from '~/components/shared/BaseNavbar'
 
   export default {
-    fetch ({ store }) {
-      return store.dispatch('fetchPages')
-    },
-
     computed: {
       getPage () {
         return this.$store.getters['getPage'](this.$route.params.page)
@@ -39,6 +40,15 @@
       },
       sections () {
         return this.getPage.fields.sections
+      },
+      image () {
+        return this.getPage.fields.banner
+      }
+    },
+
+    mounted () {
+      if (this.$route.query.ref) {
+        this.$scrollTo('#' + this.$route.query.ref)
       }
     },
 
