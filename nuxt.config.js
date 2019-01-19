@@ -29,7 +29,8 @@ export default {
 
   plugins: [
     '~/plugins/contentful',
-    '~/plugins/sentry'
+    '~/plugins/sentry',
+    { src: '~/plugins/ga', ssr: false }
   ],
 
   /*
