@@ -73,17 +73,18 @@ export default {
   },
 
   generate: {
-    routes: function () {
-      return client
+    routes: async function () {
+      const res = await client
         .getEntries({
           content_type: 'master',
           include: 2
         })
-        .then(res => {
-          return res.items[0].fields.pages.map(page => {
-            return `/${page.fields.slug}`
-          })
-        })
+      return [
+        res.items[0].fields.pages.map(page => {
+          return `/${page.fields.slug}`
+        }),
+        '/'
+      ]
     }
   }
 }
