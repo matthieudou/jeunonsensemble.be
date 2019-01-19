@@ -6,7 +6,7 @@
         class="flex items-center text-blue-lightest no-underline"
       >
         <base-logo class="fill-current"/>
-        <div class="ml-4 text-lg">Jeunons Ensemble</div>
+        <div class="ml-4 text-lg">Jeûnons Ensemble</div>
       </nuxt-link>
 
       <div>
@@ -27,9 +27,10 @@
   import BaseLogo from '~/components/shared/BaseLogo'
 
   export default {
-    computed: {
-      links () {
-        return this.$store.state.links
+    props: {
+      links: {
+        type: Array,
+        default: () => ([])
       }
     },
 
