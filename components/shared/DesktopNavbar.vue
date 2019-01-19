@@ -1,6 +1,6 @@
 <template>
-  <nav class="h-full">
-    <div class="flex justify-between items-center flex-wrap text-blue-lightest h-full px-8">
+  <nav>
+    <div class="flex justify-between items-center flex-wrap text-blue-lightest h-full px-8 py-4">
       <nuxt-link
         to="/accueil"
         class="flex items-center text-blue-lightest no-underline"

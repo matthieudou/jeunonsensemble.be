@@ -1,7 +1,12 @@
 <template>
-  <div class="bg-blue h-16 sticky pin-t z-10">
+  <div class="bg-blue sticky pin-t z-10">
     <desktop-navbar
       class="hidden md:block"
+      :links="links"
+    />
+
+    <mobile-navbar
+      class="block md:hidden"
       :links="links"
     />
   </div>
@@ -9,6 +14,7 @@
 
 <script>
   import DesktopNavbar from '~/components/shared/DesktopNavbar'
+  import MobileNavbar from '~/components/shared/MobileNavbar'
 
   export default {
     computed: {
@@ -18,7 +24,8 @@
     },
 
     components: {
-      DesktopNavbar
+      DesktopNavbar,
+      MobileNavbar
     }
   }
 </script>

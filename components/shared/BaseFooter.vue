@@ -1,8 +1,8 @@
 <template>
-  <div class="p-8 bg-grey-lighter z-10">
+  <div class="px-8 md:px-12 py-8 bg-grey-lighter z-10">
 
     <!-- LINKS -->
-    <div class="flex justify-around flex-wrap">
+    <div class="flex justify-between flex-wrap">
       <div
         class="mb-8"
         v-for="object in footerLinksObjects"
@@ -38,8 +38,8 @@
     </div>
 
     <!-- COPYRIGHT -->
-    <div class="border-t flex items-center justify-between pt-6 text-sm">
-      <div>
+    <div class="border-t flex flex-wrap items-center justify-between pt-6 text-sm">
+      <div class="mt-2">
         Copyright 2019 - Jeûnons Ensemble -
         <a
           class="text-grey-darkest no-underline"
@@ -49,7 +49,7 @@
         </a>
       </div>
       <a
-        class="text-grey-darkest no-underline"
+        class="text-grey-darkest no-underline mt-2"
         href="mailto:info.jeunonsensemble@gmail.com"
       >
         info.jeunonsensemble@gmail.com

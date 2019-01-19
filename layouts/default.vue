@@ -1,5 +1,5 @@
 <template>
-  <div class="font-sans">
+  <div class="font-sans text-grey-darkest">
     <nuxt/>
     <base-footer/>
   </div>
