@@ -72,10 +72,6 @@ export default {
     }
   },
 
-  router: {
-    middleware: 'root'
-  },
-
   generate: {
     routes: async function () {
       const res = await client

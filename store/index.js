@@ -6,7 +6,7 @@ export const getters = {
   getLinks (state) {
     const links = state.pages.map(page => {
       return {
-        slug: `/${page.fields.slug}`,
+        slug: page.fields.slug,
         text: page.fields.title
       }
     })
@@ -16,7 +16,7 @@ export const getters = {
     const links = state.pages.map(page => {
       return {
         title: page.fields.title,
-        slug: `/${page.fields.slug}`,
+        slug: page.fields.slug,
         sections: page.fields.sections.map(section => {
           return {
             title: section.fields.title,
@@ -40,6 +40,9 @@ export const getters = {
 export const mutations = {
   setPages (state, value) {
     state.pages = value
+  },
+  cleanFirstPageSlug (state) {
+    state.pages[0].fields.slug = '/'
   }
 }
 
@@ -55,6 +58,7 @@ export const actions = {
       })
       .then(res => {
         commit('setPages', res.items[0].fields.pages)
+        commit('cleanFirstPageSlug')
       })
   }
 }
