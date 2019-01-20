@@ -81,7 +81,7 @@ export default {
         })
       return [
         ...res.items[0].fields.pages.map(page => {
-          return `/${page.fields.slug}`
+          return `/${page.fields.slug === '/' ? '' : page.fields.slug}`
         }),
         '/'
       ]
