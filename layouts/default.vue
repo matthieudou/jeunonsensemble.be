@@ -9,8 +9,6 @@
   import BaseFooter from '~/components/shared/BaseFooter'
 
   export default {
-    middleware: ['root'],
-
     head () {
       return {
         bodyAttrs: {
