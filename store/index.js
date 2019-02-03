@@ -1,5 +1,6 @@
 export const state = () => ({
-  pages: []
+  pages: [],
+  informations: {}
 })
 
 export const getters = {
@@ -12,6 +13,7 @@ export const getters = {
     })
     return links
   },
+
   getFooterLinks (state) {
     const links = state.pages.map(page => {
       return {
@@ -28,12 +30,17 @@ export const getters = {
 
     return links
   },
+
   getPage (state) {
     return slug => {
       return state.pages.find(p => {
         return p.fields.slug === slug
       })
     }
+  },
+
+  getInformations (state) {
+    return state.informations
   }
 }
 
@@ -41,8 +48,13 @@ export const mutations = {
   setPages (state, value) {
     state.pages = value
   },
+
   cleanFirstPageSlug (state) {
-    state.pages[0].fields.slug = '/'
+    state.pages[0].fields.slug = ''
+  },
+
+  setInformations (state, value) {
+    state.informations = value
   }
 }
 
@@ -50,6 +62,7 @@ export const actions = {
   async nuxtServerInit ({ dispatch }) {
     await dispatch('fetchPages')
   },
+
   fetchPages ({ commit }) {
     return this.app.$contentful
       .getEntries({
@@ -57,8 +70,10 @@ export const actions = {
         include: 2
       })
       .then(res => {
-        commit('setPages', res.items[0].fields.pages)
+        const { pages, ...otherOptions } = res.items[0].fields
+        commit('setPages', pages)
         commit('cleanFirstPageSlug')
+        commit('setInformations', otherOptions)
       })
   }
 }
