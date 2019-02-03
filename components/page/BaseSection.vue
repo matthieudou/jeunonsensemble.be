@@ -1,26 +1,26 @@
 <template>
   <div>
-    <nuxt-link
-      :to="{query: {ref: computeSlug}}"
-      class="text-grey-darkest mt-12 block"
-      @click.native="scrollTo(computeSlug)"
+    <h2
+      :id="sectionObject.slug"
+      class="text-xl font-bold mt-12 anchor"
     >
-      <h2
-        :id="computeSlug"
-        class="text-sm text-secondary uppercase font-bold"
+      <nuxt-link
+        :to="{hash: sectionObject.slug}"
+        @click.native="$scrollTo(sectionObject.slug)"
+        class="text-blue-dark no-underline text-secondary"
       >
         {{ sectionObject.title }}
-      </h2>
-    </nuxt-link>
+      </nuxt-link>
+    </h2>
 
     <div
       class="mt-6 tracking-wide leading-normal"
-      v-html="renderedHtml"/>
+      v-html="renderedHtml"
+    />
   </div>
 </template>
 
 <script>
-  import * as slugify from 'slugify'
   import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types'
   import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 
@@ -39,33 +39,21 @@
     },
 
     computed: {
-      computeSlug () {
-        return slugify(this.sectionObject.title, {
-          replacement: '-',
-          lower: true,
-          remove: /[*+~.()'"!:@]/g
-        })
-      },
       document () {
         return this.sectionObject.content
       },
       renderedHtml () {
         return documentToHtmlString(this.document, options)
       }
-    },
-
-    methods: {
-      scrollTo (slug) {
-        this.$scrollTo('#' + slug)
-      }
     }
   }
 
   const options = {
     renderMark: {
-      [MARKS.BOLD]: text => `<span class="font-bold">${text}<span>`,
-      [MARKS.UNDERLINE]: text => `<span class="underline">${text}<span>`,
-      [MARKS.ITALIC]: text => `<span class="italic">${text}<span>`
+      [MARKS.BOLD]: text => `<b>${text}</b>`,
+      [MARKS.UNDERLINE]: text => `<u>${text}</u>`,
+      [MARKS.ITALIC]: text => `<i>${text}</i>`,
+      [MARKS.CODE]: text => `<code>${text}</code>`
     },
 
     renderNode: {
@@ -87,7 +75,7 @@
         </div>
       `,
       [INLINES.HYPERLINK]: (node, next) => `
-        <a class="text-blue underline" href="${node.data.uri}">
+        <a class="text-blue underline" href="${node.data.uri}" target="_blank">
           ${next(node.content)}
         </a>
       `,

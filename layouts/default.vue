@@ -24,20 +24,12 @@
 </script>
 
 <style lang="scss">
-.text-secondary {
+.anchor::before {
+  content: '';
+  display: block;
   position: relative;
-  display: inline-block;
-
-  &::before {
-    content: '';
-    background-color: config('colors.blue-lighter');
-    bottom: 0;
-    left: 0;
-    height: 50%;
-    width: 100%;
-    transform: translateX(-5%);
-    position: absolute;
-    z-index: -1;
-  }
+  width: 0;
+  height: 120px;
+  margin-top: -120px;
 }
 </style>
