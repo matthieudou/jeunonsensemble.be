@@ -52,11 +52,11 @@
 
         <div class="mt-16">
           <nuxt-link
-            class="block mt-12 no-underline text-grey-darkest uppercase font-bold tracking-wide text-lg"
+            class="block p-4 no-underline text-grey-darkest uppercase font-bold tracking-wide text-lg text-right"
             @click.native="navOpen = false"
             v-for="link in links"
             :key="link.slug"
-            :to="link.slug"
+            :to="'/' + link.slug"
           >
             {{ link.text }}
           </nuxt-link>

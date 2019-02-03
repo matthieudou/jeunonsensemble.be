@@ -41,17 +41,59 @@ export default {
     '~/assets/styles/main.scss'
   ],
 
+  modules: [
+    '@nuxtjs/sitemap'
+  ],
+
   plugins: [
     '~/plugins/contentful',
     '~/plugins/sentry',
-    '~/plugins/scrollTo',
+    '~/plugins/mixins',
     { src: '~/plugins/ga', ssr: false }
   ],
 
   /*
   ** Customize the progress bar color
   */
-  loading: { color: '#3B8070' },
+  loading: { color: '#a2f5bf' },
+
+  router: {
+    scrollBehavior (to, from, savedPosition) {
+      // if the returned position is falsy or an empty object,
+      // will retain current scroll position.
+      let position = false
+
+      // if no children detected
+      if (to.matched.length < 2) {
+        // scroll to the top of the page
+        position = { x: 0, y: 0 }
+      } else if (to.matched.some((r) => r.components.default.options.scrollToTop)) {
+        // if one of the children has scrollToTop option set to true
+        position = { x: 0, y: 0 }
+      }
+
+      // savedPosition is only available for popstate navigations (back button)
+      if (savedPosition) {
+        position = savedPosition
+      }
+
+      return new Promise(resolve => {
+        // wait for the out transition to complete (if necessary)
+        window.$nuxt.$once('triggerScroll', () => {
+          // coords will be used if no selector is provided,
+          // or if the selector didn't match any element.
+          if (to.hash && document.getElementById(to.hash)) {
+            // scroll to anchor by returning the selector
+            position = {
+              selector: to.hash
+              // offset: { x: 0, y: 120 }
+            }
+          }
+          resolve(position)
+        })
+      })
+    }
+  },
 
   /*
   ** Build configuration
@@ -73,18 +115,20 @@ export default {
   },
 
   generate: {
-    routes: async function () {
-      const res = await client
-        .getEntries({
-          content_type: 'master',
-          include: 2
-        })
-      return [
-        ...res.items[0].fields.pages.map(page => {
-          return `/${page.fields.slug === '/' ? '' : page.fields.slug}`
-        }),
-        '/'
-      ]
+    routes () {
+      return paths
+    }
+  },
+
+  sitemap: {
+    path: '/sitemap.xml',
+    hostname: 'https://jeunonsensemble.be',
+    cacheTime: 1000 * 60 * 15,
+    gzip: true,
+    generate: true, // Enable me when using nuxt generate
+    exclude: [],
+    routes () {
+      return paths
     }
   }
 }
@@ -95,3 +139,17 @@ const client = contentful.createClient({
   host: 'https://cdn.contentful.com',
   environment: 'master'
 })
+
+const paths = client
+  .getEntries({
+    content_type: 'master',
+    include: 2
+  })
+  .then(res => {
+    return [
+      ...res.items[0].fields.pages.map(page => {
+        return page.fields.slug === '/' ? '' : page.fields.slug
+      }),
+      '/'
+    ]
+  })

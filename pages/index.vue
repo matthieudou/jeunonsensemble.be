@@ -12,7 +12,7 @@
 
     <!-- REST OF THE PAGE -->
     <section class="container p-8">
-      <div class="max-w-md">
+      <div class="max-w-xl">
         <h1 class="text-4xl">{{ title }}</h1>
 
         <article
@@ -46,12 +46,6 @@
       },
       image () {
         return this.getPage.fields.banner
-      }
-    },
-
-    mounted () {
-      if (this.$route.query.ref) {
-        this.$scrollTo('#' + this.$route.query.ref)
       }
     },
 
