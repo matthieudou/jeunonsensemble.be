@@ -86,7 +86,6 @@ export default {
             // scroll to anchor by returning the selector
             position = {
               selector: to.hash
-              // offset: { x: 0, y: 120 }
             }
           }
           resolve(position)

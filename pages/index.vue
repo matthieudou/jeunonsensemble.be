@@ -1,11 +1,13 @@
 <template>
   <div>
     <!-- POTENTIAL BANNER IMAGE -->
-    <div
-      v-if="image"
-      class="h-48 bg-cover bg-center"
-      :style="`background-image: url(${image.fields.file.url})`"
-    />
+    <no-ssr>
+      <div
+        v-if="image"
+        class="h-48 bg-cover bg-center"
+        :style="`background-image: url(${image.fields.file.url})`"
+      />
+    </no-ssr>
 
     <!-- NAVIGATION -->
     <base-navbar/>

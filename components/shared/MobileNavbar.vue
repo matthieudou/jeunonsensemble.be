@@ -26,7 +26,7 @@
     <transition name="zoomInOut">
       <div
         class="fixed pin bg-grey-lightest px-8 py-4 border-t-8 border-blue"
-        v-if="navOpen">
+        v-show="navOpen">
 
         <div class="flex justify-between items-center text-grey-darkest">
           <base-logo class="w-10 h-10 fill-current text-blue"/>
