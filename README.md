@@ -1,23 +1,22 @@
 # jeunonsensemble.be
 
-> Site web de jêunons ensemble
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c62d7209-866a-433a-a80b-64c9e7f5b4e3/deploy-status)](https://app.netlify.com/sites/jeunonsensemble/deploys)
+
+> Site web de jeûnons ensemble
 
 ## Build Setup
 
 ``` bash
 # install dependencies
-$ npm install # Or yarn install
+$ yarn
 
 # serve with hot reload at localhost:3000
-$ npm run dev
+$ yarn dev
 
 # build for production and launch server
-$ npm run build
-$ npm start
+$ yarn build
+$ yarn start
 
 # generate static project
-$ npm run generate
+$ yarn generate
 ```
-
-For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
-
