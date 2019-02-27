@@ -19,7 +19,7 @@
     "@sentry/browser": "^4.6.2",
     "contentful": "^7.1.0",
     "dotenv": "^6.2.0",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.4.5"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
