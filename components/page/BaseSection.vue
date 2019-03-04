@@ -64,7 +64,7 @@
         <h6>${next(node.content)}</h6>
       `,
       [BLOCKS.QUOTE]: (node, next) => `
-        <blockquote class="border-l-4 border-blue-lighter p-2 pl-4 text-grey-dark -ml-6">${next(node.content)}</blockquote>
+        <blockquote class="border-l-4 border-blue-lighter p-2 pl-4 text-grey-darker -ml-6">${next(node.content)}</blockquote>
       `,
       [BLOCKS.HR]: () => `
         <div class="my-6 border-b-2 border-blue w-24 h-0"></div>

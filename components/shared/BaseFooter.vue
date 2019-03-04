@@ -23,7 +23,7 @@
           :key="`${object.slug}-${link.slug}`"
         >
           <nuxt-link
-            class="no-underline text-grey-darker"
+            class="no-underline text-grey-darkest"
             @click.native="$scrollTo(link.slug)"
             :to="{
               path: '/' + object.slug,
