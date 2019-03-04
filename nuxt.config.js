@@ -12,6 +12,9 @@ export default {
   ** Headers of the page
   */
   head: {
+    htmlAttrs: {
+      lang: 'fr'
+    },
     title: 'jeunonsensemble.be',
     meta: [
       { charset: 'utf-8' },
